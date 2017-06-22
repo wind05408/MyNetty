@@ -14,7 +14,7 @@
 
 
     <properties>
-        <netty.version>4.1.9.Final</netty.version>
+        <netty.version>4.1.12.Final</netty.version>
         <hessian.version>4.0.38</hessian.version>
         <protostuff.version>1.0.12</protostuff.version>
         <kryo.version>4.0.0</kryo.version>
