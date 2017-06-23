@@ -13,8 +13,8 @@ public class SynchronizedMain implements Runnable {
     @Override
     public void run() {
         for (int j = 0; j <10000000 ; j++) {
-//            synchronized (i){
-            synchronized (instance){
+//            synchronized (i){ //17380730
+            synchronized (instance){ //20000000
                 i++;
             }
         }
