@@ -11,6 +11,7 @@
     <modules>
         <module>netty4-simple-demo</module>
         <module>juc-simple-demo</module>
+        <module>nio-simple-demo</module>
     </modules>
 
 
