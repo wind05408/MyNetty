@@ -37,6 +37,11 @@ public class SubReqServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
+
+                            //ProtobufDecoder仅仅负责解码，因此在ProtobufDecoder前面，一定要能够处理半包的解码器，有以下3种方式：
+                            //(1) 使用Netty提供的ProtobufVarint32FrameDecoder，它可以处理半包消息；
+                            //(2) 继承Netty提供的通用半包解码器LengthFieldBasedFrameDecoder;
+                            //(3) 继承ByteToMessageDecoder，自己处理
                             ch.pipeline().addLast(new ProtobufVarint32FrameDecoder());
                             ch.pipeline().addLast(new ProtobufDecoder(SubscribeReqProto.SubscribeReq.getDefaultInstance()));
                             ch.pipeline().addLast(new ProtobufVarint32LengthFieldPrepender());
@@ -67,3 +72,4 @@ public class SubReqServer {
         new SubReqServer().bind(port);
     }
 }
+
