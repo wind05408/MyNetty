@@ -42,9 +42,17 @@ public class SubReqServer {
                             //(1) 使用Netty提供的ProtobufVarint32FrameDecoder，它可以处理半包消息；
                             //(2) 继承Netty提供的通用半包解码器LengthFieldBasedFrameDecoder;
                             //(3) 继承ByteToMessageDecoder，自己处理
+
+                            //ProtobufVarint32FrameDecoder ： 半包问题
                             ch.pipeline().addLast(new ProtobufVarint32FrameDecoder());
+
+                            //ProtobufDecoder：解码
                             ch.pipeline().addLast(new ProtobufDecoder(SubscribeReqProto.SubscribeReq.getDefaultInstance()));
+
+                            //ProtobufVarint32LenghtFiedldPrepender：半包问题
                             ch.pipeline().addLast(new ProtobufVarint32LengthFieldPrepender());
+
+                            //ProtobufEncoder：编码
                             ch.pipeline().addLast(new ProtobufEncoder());
                             ch.pipeline().addLast(new SubReqServerHandler());
 
