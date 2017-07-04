@@ -12,6 +12,18 @@
     <artifactId>netty4-simple-demo</artifactId>
     <packaging>jar</packaging>
 
+    <!--<properties>-->
+        <!--<common.version>1.0-SNAPSHOT</common.version>-->
+    <!--</properties>-->
+
+    <dependencies>
+        <dependency>
+            <groupId>com.dk.netty</groupId>
+            <artifactId>common-simple-demo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

@@ -12,6 +12,7 @@
         <module>netty4-simple-demo</module>
         <module>juc-simple-demo</module>
         <module>nio-simple-demo</module>
+        <module>common-simple-demo</module>
     </modules>
 
 
@@ -80,6 +81,22 @@
             <version>2.5.0</version>
         </dependency>
 
+        <!--jackson-->
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.7.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-afterburner</artifactId>
+            <version>2.7.2</version>
+        </dependency>
     </dependencies>
 
     <build>
