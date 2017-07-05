@@ -24,7 +24,10 @@ public class HttpJsonResponseEncoder extends AbstractHttpJsonEncoder<HttpJsonRes
     @Override
     protected void encode(ChannelHandlerContext ctx, HttpJsonResponse msg, List<Object> out) throws Exception {
 
+        //调用父类的encode0，将Json转换为对象
         ByteBuf body = encode0(ctx, msg.getResult());
+
+
         FullHttpResponse response = msg.getResponse();
         if (response == null) {
             response = new DefaultFullHttpResponse(HTTP_1_1, OK, body);

@@ -20,8 +20,10 @@ public abstract class AbstractHttpJsonEncoder<T> extends MessageToMessageEncoder
     final static Charset UTF_8 = Charset.forName("utf-8");
 
     protected ByteBuf encode0(ChannelHandlerContext ctx, Object body) throws Exception {
+        //Object-->json
         String jsonstr = FasterJsonTool.writeValueAsString(body);
-        ByteBuf encodeBuf = Unpooled.copiedBuffer(jsonstr,UTF_8);
+
+        ByteBuf encodeBuf = Unpooled.copiedBuffer(jsonstr,UTF_8);//String到ByteBuf
         return encodeBuf;
     }
 }

@@ -35,6 +35,7 @@ public abstract class AbstractHttpJsonDecoder<T> extends MessageToMessageDecoder
         if(isPrint)
             System.out.println("The body is : " + content);
 
+        // json-->Object
         Object result = FasterJsonTool.readValue(content,clazz);
 
         return result;
