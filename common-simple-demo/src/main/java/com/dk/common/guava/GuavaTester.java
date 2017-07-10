@@ -1,6 +1,7 @@
 package com.dk.common.guava;
 
 import com.google.common.base.Optional;
+import com.google.common.base.Preconditions;
 
 /**
  * Created with IntelliJ IDEA
@@ -13,6 +14,9 @@ public class GuavaTester {
     public static void main(String[] args) {
 
         Integer invalidInput = null;
+
+        //Preconditions.checkNotNull(invalidInput,"invalidInput is null");
+
         Optional<Integer> a =  Optional.of(invalidInput);//Exception
         Optional<Integer> b =  Optional.of(new Integer(10));
         System.out.println(sum(a,b));
