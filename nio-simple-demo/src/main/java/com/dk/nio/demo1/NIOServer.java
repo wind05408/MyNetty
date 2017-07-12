@@ -18,7 +18,6 @@ import java.util.Iterator;
  * NIOServer
  * Selector,ServerSocketChannel, ByteBuffer
  * 臭名昭著的epoll bug，它会导致Selector空轮询，最终导致CPU 100%
- * git test
  * @author dk
  * @date 2017/6/27 14:33
  */
