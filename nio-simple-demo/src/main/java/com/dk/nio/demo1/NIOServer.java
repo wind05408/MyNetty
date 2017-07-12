@@ -20,6 +20,7 @@ import java.util.Iterator;
  * 臭名昭著的epoll bug，它会导致Selector空轮询，最终导致CPU 100%
  *
  * Selector,Channle,Buffer
+ * dev branch test
  * @author dk
  *
  * @date 2017/6/27 14:33
