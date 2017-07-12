@@ -7,6 +7,9 @@ import io.netty.handler.codec.DelimiterBasedFrameDecoder;
 import io.netty.handler.codec.Delimiters;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.ipfilter.IpFilterRuleType;
+import io.netty.handler.ipfilter.IpSubnetFilterRule;
+import io.netty.handler.ipfilter.RuleBasedIpFilter;
 
 /**
  * Created with IntelliJ IDEA
@@ -32,5 +35,14 @@ public class HelloClientInitializer extends ChannelInitializer {
         // 客户端的逻辑
         pipeline.addLast("handler", new HelloClientHandler());
 
+
+//        //ip check
+//        String[] ip = {};
+//        int count = ip.length;
+//        IpSubnetFilterRule[] ipsf = new IpSubnetFilterRule[count];
+//        for( int i=0;i<count;i++){
+//            ipsf[i] = new IpSubnetFilterRule(ip[i],16, IpFilterRuleType.REJECT);
+//        }
+//        pipeline.addLast(new RuleBasedIpFilter(ipsf));
     }
 }

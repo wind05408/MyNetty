@@ -2,7 +2,6 @@ package com.dk.common.guava;
 
 import com.google.common.collect.ComparisonChain;
 import com.google.common.collect.Ordering;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 /**
  * Created with IntelliJ IDEA
