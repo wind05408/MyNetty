@@ -23,6 +23,7 @@ public class HelloClientHandler extends SimpleChannelInboundHandler<String> {
         super.channelActive(ctx);
     }
 
+    //对于客户端:用来检测会话是否断开，是否重来，检测网络延迟
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("Client close ");

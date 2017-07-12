@@ -35,4 +35,10 @@ public class HelloServerHandler extends SimpleChannelInboundHandler<String> {
         ctx.writeAndFlush( "Welcome to " + InetAddress.getLocalHost().getHostName() + " service!\n");
         super.channelActive(ctx);
     }
+
+    //会定时清除闲置会话
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        super.channelInactive(ctx);
+    }
 }
