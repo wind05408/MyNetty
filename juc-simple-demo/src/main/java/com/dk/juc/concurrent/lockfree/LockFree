@@ -1,0 +1,5 @@
+LockFree算法 不需要加锁
+3部分：
+    1.循环
+    2.CAS(CompareAndSet)
+    3.回退(break,continue)
