@@ -13,11 +13,11 @@ public class CounterMain2 {
     private AtomicLong max = new AtomicLong();
 
     public void set(long value){
-        for (;;){
+        for (;;){ //1.循环
            long current = max.get();
            if(value>current){
-               if(max.compareAndSet(current,value)){
-                   break;
+               if(max.compareAndSet(current,value)){//CAS
+                   break;//回退
                }else {
                    continue;
                }

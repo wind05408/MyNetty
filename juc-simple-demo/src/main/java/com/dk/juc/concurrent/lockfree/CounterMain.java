@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * Created with IntelliJ IDEA
  * CounterMain
- * 计数器
+ * 计数器 AtomicLong
  * @author dk
  * @date 2017/7/20 17:59
  */

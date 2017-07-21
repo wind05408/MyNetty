@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created with IntelliJ IDEA
  * BeanManager2
- *
+ * ConcurrentHashMap  putIfAbsent
  * @author dk
  * @date 2017/7/20 18:12
  */
