@@ -23,11 +23,15 @@ import io.netty.handler.logging.LoggingHandler;
  */
 public class EchoServer {
     public void bind(int port) throws Exception {
-        // 配置服务端的NIO线程组
+        // 配置服务端的NIO线程池 Configure the server
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
+
+            //NioEventLoopGroup 实际就是 Reactor 线程池，负责调度和执行客户端的接入、
+            // 网络读写事件的处理、用户自定义任务和定时任务的执行。
+            // 通过 ServerBootstrap 的 group 方法将两个 EventLoopGroup 实例传入
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 100)
@@ -36,6 +40,14 @@ public class EchoServer {
                         @Override
                         public void initChannel(SocketChannel ch)
                                 throws Exception {
+//                            1.	系统编解码框架-ByteToMessageCodec；
+//                            2.	通用基于长度的半包解码器-LengthFieldBasedFrameDecoder;
+//                            3.	码流日志打印Handler-LoggingHandler；
+//                            4.	SSL安全认证Handler-SslHandler；
+//                            5.	链路空闲检测Handler-IdleStateHandler；
+//                            6.	流量整形Handler-ChannelTrafficShapingHandler;
+//                            7.	Base64编解码-Base64Decoder和Base64Encoder。
+
                             //读数据的时候用decoder解码
                             ch.pipeline().addLast("frameDecoder", new LengthFieldBasedFrameDecoder(65535, 0, 2, 0, 2));
                             ch.pipeline().addLast("msgpack decoder", new MsgpackDecoder());

@@ -17,6 +17,15 @@ import org.slf4j.LoggerFactory;
 public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     private Logger logger = LoggerFactory.getLogger(getClass());
 
+//    1.	链路注册；
+//    2.	链路激活；
+//    3.	链路断开；
+//    4.	接收到请求消息；
+//    5.	请求消息接收并处理完毕；
+//    6.	发送应答消息；
+//    7.	链路发生异常；
+//    8.	发生用户自定义事件。
+
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         logger.info("server channel read...");
@@ -49,5 +58,59 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
         // Close the connection when an exception is raised.
         logger.error("server caught exception", cause);
         ctx.close();
+    }
+
+    public EchoServerHandler() {
+        super();
+    }
+
+    @Override
+    public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+        super.channelRegistered(ctx);
+    }
+
+    @Override
+    public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+        super.channelUnregistered(ctx);
+    }
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        super.channelActive(ctx);
+    }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        super.channelInactive(ctx);
+    }
+
+    @Override
+    public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
+        super.userEventTriggered(ctx, evt);
+    }
+
+    @Override
+    public void channelWritabilityChanged(ChannelHandlerContext ctx) throws Exception {
+        super.channelWritabilityChanged(ctx);
+    }
+
+    @Override
+    protected void ensureNotSharable() {
+        super.ensureNotSharable();
+    }
+
+    @Override
+    public boolean isSharable() {
+        return super.isSharable();
+    }
+
+    @Override
+    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        super.handlerAdded(ctx);
+    }
+
+    @Override
+    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+        super.handlerRemoved(ctx);
     }
 }
