@@ -6,7 +6,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created with IntelliJ IDEA
  * ReenterLockCondition
- *
+ * await() signal
  * @author dk
  * @date 2017/7/25 13:55
  */
