@@ -10,7 +10,7 @@ import java.util.concurrent.Semaphore;
  * @author dk
  * 
  */
-public class SemaphoreThread {
+public class SemaphoreMain4 {
     private int a = 0;
 
     /**
@@ -86,7 +86,7 @@ public class SemaphoreThread {
     }
 
     public static void main(String[] args) {
-        SemaphoreThread test = new SemaphoreThread();
+        SemaphoreMain4 test = new SemaphoreMain4();
         test.useThread();
     }
 }
