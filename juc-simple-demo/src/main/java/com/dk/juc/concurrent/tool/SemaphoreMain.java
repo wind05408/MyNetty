@@ -7,7 +7,7 @@ import java.util.concurrent.Semaphore;
 /**
  * Created with IntelliJ IDEA
  * SemaphoreMain
- *
+ * Semaphore 信号灯
  * @author dk
  * @date 2017/7/25 15:53
  */
