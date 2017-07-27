@@ -13,14 +13,14 @@ public class FutureMain3 {
     public static void main(String[] args) {
         ExecutorService threadPool = Executors.newSingleThreadExecutor();
 
-        CompletionService<Integer> cs = new ExecutorCompletionService(threadPool);
+        CompletionService<String> cs = new ExecutorCompletionService(threadPool);
 
         for (int i = 0; i < 5; i++) {
             final int taskId = i;
-            cs.submit(new Callable<Integer>() {
+            cs.submit(new Callable<String>() {
                 @Override
-                public Integer call() throws Exception {
-                    return taskId;
+                public String call() throws Exception {
+                    return "taskId="+taskId;
                 }
             });
         }
