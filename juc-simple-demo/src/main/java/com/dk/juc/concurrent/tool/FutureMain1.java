@@ -9,7 +9,7 @@ import java.util.concurrent.FutureTask;
  * Created with MyNetty.
  *
  * @author dk05408
- * @Description:
+ * @Description: FutureTask
  * @create 2017-07-26 19:29
  **/
 public class FutureMain1 {
