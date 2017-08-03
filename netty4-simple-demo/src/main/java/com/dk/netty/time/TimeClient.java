@@ -1,15 +1,16 @@
 package com.dk.netty.time;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LineBasedFrameDecoder;
 import io.netty.handler.codec.string.StringDecoder;
+
+import java.nio.charset.Charset;
 
 /**
  * Created with IntelliJ IDEA
@@ -39,6 +40,24 @@ public class TimeClient {
 
             // 发起异步连接操作
             ChannelFuture f = b.connect(host, port).sync();
+
+            //通过 ChannelFuture 调用 connect() 来 注册一个新ChannelFutureListener。当监听器被通知连接完成，
+            //我们检查状态。如果是成功，就写数据到 Channel，否则我们检索 ChannelFuture 中的Throwable。
+//            f.addListener(new ChannelFutureListener() {
+//                @Override
+//                public void operationComplete(ChannelFuture future) throws Exception {
+//                    if(future.isSuccess()){
+//                        ByteBuf buffer = Unpooled.copiedBuffer(
+//                                "Hello", Charset.defaultCharset()); //4
+//                        ChannelFuture wf = future.channel().writeAndFlush(buffer);                //5
+//                    }else {
+//                        Throwable cause = future.cause();
+//                        cause.getMessage();
+//                        cause.printStackTrace();
+//                    }
+//
+//                }
+//            });
 
             // 当代客户端链路关闭
             f.channel().closeFuture().sync();

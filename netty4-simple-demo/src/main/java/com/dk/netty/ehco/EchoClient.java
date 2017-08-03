@@ -55,7 +55,7 @@ public class EchoClient {
 
 
     public static void main(String[] args) throws Exception {
-        new EchoClient(Constants.HOST, Constants.PORT).send();
+        new EchoClient(Constants.HOST, 8082).send();
     }
 
 

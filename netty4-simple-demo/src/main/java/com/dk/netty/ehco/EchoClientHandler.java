@@ -25,6 +25,7 @@ public class EchoClientHandler extends ChannelInboundHandlerAdapter {
         firstMessage.writeBytes(req);
     }
 
+    //服务器的连接被建立后调用
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         logger.info("client channel active");
@@ -33,6 +34,7 @@ public class EchoClientHandler extends ChannelInboundHandlerAdapter {
         ctx.writeAndFlush(firstMessage);
     }
 
+    //数据后从服务器接收到调用
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) { // (2)
         ByteBuf buf = (ByteBuf) msg;
@@ -46,6 +48,7 @@ public class EchoClientHandler extends ChannelInboundHandlerAdapter {
         }
     }
 
+//    捕获异常时调用
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) { // (4)
         // Close the connection when an exception is raised.
