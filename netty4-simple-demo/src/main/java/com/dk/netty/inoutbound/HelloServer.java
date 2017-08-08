@@ -30,8 +30,10 @@ public class HelloServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
+                            // 注册两个OutboundHandler，执行顺序为注册顺序的逆序，所以应该是OutboundHandler2 OutboundHandler1
                             ch.pipeline().addLast(new OutboundHandler1());
                             ch.pipeline().addLast(new OutboundHandler2());
+                            // 注册两个InboundHandler，执行顺序为注册顺序，所以应该是InboundHandler1 InboundHandler2
                             ch.pipeline().addLast(new InboundHandler1());
                             ch.pipeline().addLast(new InboundHandler2());
                         }
