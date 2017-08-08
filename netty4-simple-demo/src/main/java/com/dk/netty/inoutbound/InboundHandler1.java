@@ -20,6 +20,10 @@ public class InboundHandler1 extends ChannelInboundHandlerAdapter {
         logger.info("InboundHandler1.channelRead: ctx :" + ctx);
         // 通知执行下一个InboundHandler
         ctx.fireChannelRead(msg);
+//        在使用Handler的过程中，需要注意：
+//        1、ChannelInboundHandler之间的传递，通过调用 ctx.fireChannelRead(msg) 实现；调用ctx.write(msg) 将传递到ChannelOutboundHandler。
+//        2、ctx.write()方法执行后，需要调用flush()方法才能令它立即执行。
+//        3、ChannelOutboundHandler 在注册的时候需要放在最后一个ChannelInboundHandler之前，否则将无法传递到ChannelOutboundHandler。
     }
 
     @Override
