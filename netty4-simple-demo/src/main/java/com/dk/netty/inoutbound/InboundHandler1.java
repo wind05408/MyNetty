@@ -1,5 +1,7 @@
 package com.dk.netty.inoutbound;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import org.slf4j.Logger;
@@ -19,7 +21,18 @@ public class InboundHandler1 extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         logger.info("InboundHandler1.channelRead: ctx :" + ctx);
         // 通知执行下一个InboundHandler
-        ctx.fireChannelRead(msg);
+        //ctx.fireChannelRead(msg);
+
+        //下面是测试传递信息的修改
+        ByteBuf buf = (ByteBuf) msg;
+        byte[] req = new byte[buf.readableBytes()];
+        buf.readBytes(req);
+        String body = new String(req, "UTF-8");
+
+
+        String response = "test handler " +body;
+        ByteBuf resp = Unpooled.copiedBuffer(response.getBytes());
+        ctx.fireChannelRead(resp);
 //        在使用Handler的过程中，需要注意：
 //        1、ChannelInboundHandler之间的传递，通过调用 ctx.fireChannelRead(msg) 实现；调用ctx.write(msg) 将传递到ChannelOutboundHandler。
 //        2、ctx.write()方法执行后，需要调用flush()方法才能令它立即执行。
