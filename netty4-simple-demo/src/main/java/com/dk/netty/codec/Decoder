@@ -1,0 +1,21 @@
+解码字节到消息（ByteToMessageDecoder 和 ReplayingDecoder）
+解码消息到消息（MessageToMessageDecoder）
+decoder 负责将“入站”数据从一种格式转换到另一种格式
+
+ByteToMessageDecoder 是用于将字节转为消息（或其他字节序列）。
+
+ReplayingDecoder 是 byte-to-message 解码的一种特殊的抽象基类，读取缓冲区的数据之前需要检查缓冲区是否有足够的字节，使用ReplayingDecoder就无需自己检查；
+若ByteBuf中有足够的字节，则会正常读取；若没有足够的字节则会停止解码
+
+
+更多 Decoder：
+使用场景：
+io.netty.handler.codec.LineBasedFrameDecoder 通过结束控制符("\n" 或 "\r\n").解析入站数据。
+io.netty.handler.codec.http.HttpObjectDecoder 用于 HTTP 数据解码
+
+MessageToMessageDecoder
+用于从一种消息解码为另外一种消息（例如，POJO 到 POJO）
+
+io.netty.handler.codec.http.HttpObjectAggregator,继承自MessageToMessageDecoder
+
+TooLongFrameException 解码器在帧太长时抛出
