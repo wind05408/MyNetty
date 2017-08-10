@@ -1,0 +1,14 @@
+encoder 是用来把出站数据从一种格式转换到另外一种格式，因此它实现了 ChannelOutboundHandler
+
+MessageToByteEncoder
+这个类只有一个方法，而 decoder 却是有两个，原因就是 decoder 经常需要在 Channel 关闭时产生一个“最后的消息”。
+出于这个原因，提供了decodeLast()，而 encoder 没有这个需求
+encode():The encode method is the only abstract method you need to implement. It is called with the outbound message, which this class will encodes to a ByteBuf. The ByteBuf is then forwarded to the next ChannelOutboundHandler in the ChannelPipeline.
+
+WebSocket08FrameEncoder io.netty.handler.codec.http.websocketx
+
+
+MessageToMessageEncoder
+encode():The encode method is the only abstract method you need to implement. It is called for each message written with write(...) to encode the message to one or multiple new outbound messages. The encoded messages are then forwarded
+
+ProtobufEncoder  io.netty.handler.codec.protobuf
