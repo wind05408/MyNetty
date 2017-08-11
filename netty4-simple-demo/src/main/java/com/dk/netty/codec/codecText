@@ -1,0 +1,29 @@
+ByteToMessageCodec:结合了ByteToMessageDecoder 和 MessageToByteEncoder
+decode	    This method is called as long as bytes are available to be consumed. It converts the inbound ByteBuf to the specified message format and forwards them to the next ChannelInboundHandler in the pipeline.
+decodeLast	The default implementation of this method delegates to decode(). It is called only be called once, when the Channel goes inactive. For special handling it can be oerridden.
+encode	    This method is called for each message to be written through the ChannelPipeline. The encoded messages are contained in a ByteBuf which
+
+MessageToMessageCodec
+public abstract class MessageToMessageCodec<INBOUND,OUTBOUND>
+protected abstract void encode(ChannelHandlerContext ctx,OUTBOUND msg, List<Object> out)
+protected abstract void decode(ChannelHandlerContext ctx,INBOUND msg, List<Object> out)
+
+
+CombinedChannelDuplexHandler
+
+public class CombinedChannelDuplexHandler<I extends ChannelInboundHandler,O extends ChannelOutboundHandler>
+这个类是扩展 ChannelInboundHandler 和 ChannelOutboundHandler 参数化的类型。这提供了一个容器,单独的解码器和编码器类合作而无需直接扩展抽象的编解码器类
+
+
+
+
+
+
+
+
+
+
+
+
+
+
