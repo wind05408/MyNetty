@@ -12,7 +12,8 @@ protected abstract void decode(ChannelHandlerContext ctx,INBOUND msg, List<Objec
 CombinedChannelDuplexHandler
 
 public class CombinedChannelDuplexHandler<I extends ChannelInboundHandler,O extends ChannelOutboundHandler>
-这个类是扩展 ChannelInboundHandler 和 ChannelOutboundHandler 参数化的类型。这提供了一个容器,单独的解码器和编码器类合作而无需直接扩展抽象的编解码器类
+这个类是扩展 ChannelInboundHandler 和 ChannelOutboundHandler 参数化的类型。
+这提供了一个容器,单独的解码器和编码器类合作而无需直接扩展抽象的编解码器类
 
 
 
