@@ -18,8 +18,14 @@ import io.netty.util.AttributeKey;
  * Created with MyNetty
  *
  * @author dk05408
- * @Description:
+ * @Description: Netty AttributeKey用法
  * @create 2017-08-17 16:41
+ * AttributeKey<Long> START_TIME = AttributeKey.newInstance("START_TIME");
+ *
+ * ctx.channel().attr(START_TIME).setIfAbsent(System.currentTimeMillis());
+ * ctx.channel().attr(START_TIME).set(System.currentTimeMillis());
+ *
+ * Long startTime = ctx.channel().attr(START_TIME).get();
  **/
 public class NettyAttrMain {
 
