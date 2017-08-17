@@ -22,6 +22,9 @@ import io.netty.util.AttributeKey;
  * @create 2017-08-17 16:41
  * AttributeKey<Long> START_TIME = AttributeKey.newInstance("START_TIME");
  *
+ * 1.ServerBootstrap.childAttr(START_TIME, System.currentTimeMillis())
+ *
+ *  2.
  * ctx.channel().attr(START_TIME).setIfAbsent(System.currentTimeMillis());
  * ctx.channel().attr(START_TIME).set(System.currentTimeMillis());
  *
@@ -30,10 +33,13 @@ import io.netty.util.AttributeKey;
 public class NettyAttrMain {
 
     public static void main(String[] args) throws InterruptedException {
+        final AttributeKey<Long> START_TIME = AttributeKey.newInstance("START_TIME");
+
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap b = new ServerBootstrap();
+            b.childAttr(START_TIME, System.currentTimeMillis()); //8
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
@@ -41,7 +47,7 @@ public class NettyAttrMain {
                         private static final int READ_IDEL_TIME_OUT = 4;
                         private static final int WRITE_IDEL_TIME_OUT = 5;
 
-                        private AttributeKey<Long> START_TIME = AttributeKey.newInstance("START_TIME");
+
 
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
@@ -53,8 +59,10 @@ public class NettyAttrMain {
                                 public void channelRegistered(ChannelHandlerContext ctx)//链接事件监听
                                         throws Exception {
                                     System.out.println("channel register");
+                                    Long startTime = ctx.channel().attr(START_TIME).get();
+                                    System.out.println("channelRegistered "+startTime);
                                     //设置链接属性，记录链接开始的时间
-                                    ctx.channel().attr(START_TIME).setIfAbsent(System.currentTimeMillis());
+//                                    ctx.channel().attr(START_TIME).setIfAbsent(System.currentTimeMillis());
 //                                    ctx.attr(START_TIME).set(System.currentTimeMillis());
                                 }
 
@@ -93,7 +101,7 @@ public class NettyAttrMain {
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
-            ChannelFuture f = b.bind(8080).sync();
+            ChannelFuture f = b.bind(8082).sync();
             f.channel().closeFuture().sync();
         } finally {
             workerGroup.shutdownGracefully();
