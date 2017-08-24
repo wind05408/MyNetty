@@ -1,0 +1,15 @@
+RejectedExceptionHandler的4种策略
+1.ThreadPoolExecutor.AbortPolicy:默认的策略。处理程序遭到拒绝将抛出运行时RejectedExecutionException
+          /**
+         * The default rejected execution handler
+         */
+        private static final RejectedExecutionHandler defaultHandler =
+            new AbortPolicy();
+
+2.ThreadPoolExecutor.CallerRunsPolicy:线程调用运行该任务的execute本身。此策略提供简单的反馈控制机制，能够减缓新任务的提交速度。
+该策略既不会抛弃任务也不会爆出异常，而是将任务退回给调用者，从而降低新任务的流量
+
+3.ThreadPoolExecutor.DiscardPolicy:不能执行的任务将被删除。
+
+4.ThreadPoolExecutor.DiscardOldestPolicy: 如果执行程序尚未关闭，则位于工作队列头部的任务将被删除，然后重试执行程序（如果再次失败，则重复此过程）。
+；当新提交的任务无法保存到队列中等待执行时将抛弃最旧的任务，然后尝试提交新任务。如果等待队列是一个优先级队列，抛弃最旧的策略将导致抛弃优先级最高的任务，因此AbortPolicy最好不要和优先级队列一起使用。
