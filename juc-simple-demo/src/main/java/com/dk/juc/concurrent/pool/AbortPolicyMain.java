@@ -39,7 +39,9 @@ public class AbortPolicyMain {
 
         @Override
         public Thread newThread(Runnable r) {
-            return null;
+            Thread thread = new Thread(r);
+            System.out.println("create "+name+"_"+thread.getId());
+            return thread;
         }
 
         private String name;
