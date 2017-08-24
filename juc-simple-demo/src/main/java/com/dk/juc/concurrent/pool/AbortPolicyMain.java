@@ -7,7 +7,7 @@ import java.util.concurrent.*;
  * Created with MyNetty
  *
  * @author dk05408
- * @Description:
+ * @Description:  当提交的任务无法进入等待队列且线程池中创建的线程数量已经达到了最大线程数量的限制，则会拒绝新提交的任务。
  * @create 2017-08-24 18:36
  **/
 public class AbortPolicyMain {

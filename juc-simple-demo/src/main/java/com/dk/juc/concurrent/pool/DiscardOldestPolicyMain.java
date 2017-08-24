@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
  * Created with MyNetty
  *
  * @author dk05408
- * @Description:
+ * @Description:  抛弃最旧的任务
  * @create 2017-08-24 18:41
  **/
 public class DiscardOldestPolicyMain {
