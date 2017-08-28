@@ -59,3 +59,5 @@ public class ThreadPoolMain {
         service.shutdown();
     }
 }
+
+//beforeExecute,afterExecute,terminated
