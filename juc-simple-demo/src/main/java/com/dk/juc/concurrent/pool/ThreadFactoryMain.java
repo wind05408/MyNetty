@@ -7,9 +7,10 @@ import java.util.concurrent.*;
  *
  * @author dk05408
  * @Description:
- * @create 2017-08-24 18:04
+ * @create 2017-08-28 14:21
  **/
-public class RejectHandlerMain {
+public class ThreadFactoryMain {
+
     private static class MyTask implements Runnable{
         @Override
         public void run() {
@@ -25,19 +26,20 @@ public class RejectHandlerMain {
     public static void main(String[] args) throws InterruptedException {
         MyTask task = new MyTask();
         ExecutorService service = new ThreadPoolExecutor(5, 5,
-                0L, TimeUnit.MILLISECONDS,
-                new LinkedBlockingQueue<Runnable>(10),
-                Executors.defaultThreadFactory(),
-                new RejectedExecutionHandler() {
+                0l, TimeUnit.MILLISECONDS,
+                new SynchronousQueue<Runnable>(),
+                new ThreadFactory() {
                     @Override
-                    public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
-                        System.out.println(r.toString()+" is discard");
+                    public Thread newThread(Runnable r) {
+                        Thread t = new Thread(r);
+                        t.setDaemon(true);
+                        System.out.println("create "+t);
+                        return t;
                     }
                 });
-
-        for (int i = 0; i <Integer.MAX_VALUE ; i++) {
+        for (int i = 0; i < 5; i++) {
             service.submit(task);
-            Thread.sleep(10);
         }
+        Thread.sleep(2000);
     }
 }
