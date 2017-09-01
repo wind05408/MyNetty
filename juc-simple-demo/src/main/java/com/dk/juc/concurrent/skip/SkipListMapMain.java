@@ -13,9 +13,13 @@ import java.util.concurrent.ConcurrentSkipListMap;
 public class SkipListMapMain {
     public static void main(String[] args) {
         Map<Integer,Integer> map = new ConcurrentSkipListMap<>();
-        for (int i = 0; i < 5 ; i++) {
-            map.put(i,i);
-        }
+//        for (int i = 0; i < 5 ; i++) {
+            map.put(5,5);
+        map.put(4,4);
+        map.put(2,2);
+        map.put(1,1);
+        map.put(7,7);
+//        }
 
         for (Map.Entry<Integer,Integer> entry:map.entrySet()) {
             System.out.println(entry.getKey());
