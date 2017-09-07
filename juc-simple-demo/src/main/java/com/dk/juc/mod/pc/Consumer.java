@@ -3,8 +3,6 @@ package com.dk.juc.mod.pc;
 import java.text.MessageFormat;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created with MyNetty
