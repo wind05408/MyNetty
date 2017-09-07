@@ -1,0 +1,23 @@
+1.disruptor in maven pom.xml
+    <!--多线程框架disruptor-->
+    <dependency>
+        <groupId>com.lmax</groupId>
+        <artifactId>disruptor</artifactId>
+        <version>3.3.6</version>
+    </dependency>
+
+2.disruptor的作用
+    同一个“事件”可以有多个消费者，消费者之间既可以并行处理，也可以相互依赖形成处理的先后次序(形成一个依赖图)；
+    预分配用于存储事件内容的内存空间；
+    针对极高的性能目标而实现的极度优化和无锁的设计；
+
+3.disruptor的基本概念
+    Ring Buffer
+    Sequence Disruptor
+    Sequencer
+    Sequence Barrier
+    Wait Strategy
+    Event
+    EventProcessor
+    EventHandler
+    Producer
