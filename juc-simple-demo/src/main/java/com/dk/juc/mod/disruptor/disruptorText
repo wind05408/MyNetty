@@ -21,3 +21,10 @@
     EventProcessor
     EventHandler
     Producer
+
+4.WaitStrategy
+    BlockingWaitStrategy:与使用BlockingQueue类似。使用Lock与Condition进行数据的监控和线程的唤醒。最节省CPU，但在高并发下性能最糟糕。
+    SleepingWaitStrategy：CPU使用率非常保守。在循环中不断等待数据。先进行自旋等待，如果不成功，则使用Thread.yield()让出CPU，并最终使用LockSupport.partNanos(1)进行休眠，以确保不占用太多的CPU数据。
+        因此，数据处理可能产生比较高的平均延时。异步日志。
+    YieldingWaitStrategy:低延时。消费者线程会不断循环监控缓冲区变化，在循环内部，会使用Thread.yield()让出CPU给别的线程执行时间。
+    BusySpinWaitStrategy：最疯狂的等待策略。就是一个死循环，消费者线程会尽最大努力疯狂监控缓冲区的变化，会吃掉所有的CPU资源。
