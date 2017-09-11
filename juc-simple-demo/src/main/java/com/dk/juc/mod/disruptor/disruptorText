@@ -28,3 +28,5 @@
         因此，数据处理可能产生比较高的平均延时。异步日志。
     YieldingWaitStrategy:低延时。消费者线程会不断循环监控缓冲区变化，在循环内部，会使用Thread.yield()让出CPU给别的线程执行时间。
     BusySpinWaitStrategy：最疯狂的等待策略。就是一个死循环，消费者线程会尽最大努力疯狂监控缓冲区的变化，会吃掉所有的CPU资源。
+
+5.CPU Cache缓存共享问题 LhsPadding---->Sequence
