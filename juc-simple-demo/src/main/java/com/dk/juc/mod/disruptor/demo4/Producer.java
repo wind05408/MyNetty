@@ -19,12 +19,13 @@ public class Producer {
     }
 
     public void pushData(ByteBuffer buffer){
-        long sequence = ringBuffer.next();
+        long sequence = ringBuffer.next();//grab the next sequence
         try {
+            //get the entry in the disruptor for the sequence
             DisData event = ringBuffer.get(sequence);
-            event.setValue(buffer.getLong(0));
+            event.setValue(buffer.getLong(0));//fill the data
         } finally {
-            ringBuffer.publish(sequence);
+            ringBuffer.publish(sequence);//publish the sequence
         }
     }
 }

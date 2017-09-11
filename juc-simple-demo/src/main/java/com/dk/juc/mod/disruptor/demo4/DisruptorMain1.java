@@ -22,20 +22,31 @@ public class DisruptorMain1 {
 
         DisDataFactory factory = new DisDataFactory();
 
+        //the size of the ringBuffer,must be power of 2.
         int bufferSize = 1024;
 
+        //init the disruptor
         Disruptor<DisData> disruptor = new Disruptor<DisData>(factory,
                 bufferSize,
                 executor,
                 ProducerType.MULTI,
                 new BlockingWaitStrategy());
-        disruptor.handleEventsWithWorkerPool(new Consumer(),new Consumer(),new Consumer(),new Consumer());
+
+
+        //add the consumers
+        disruptor.handleEventsWithWorkerPool(
+                new Consumer(),
+                new Consumer(),
+                new Consumer(),
+                new Consumer());
         disruptor.start();
 
+        //add the producer
         RingBuffer<DisData> ringBuffer = disruptor.getRingBuffer();
         Producer producer = new Producer(ringBuffer);
         ByteBuffer buffer = ByteBuffer.allocate(8);
 
+        //push the data to buffer
         for (long l = 0;l<10l ; l++) {
             buffer.putLong(0,l);
             producer.pushData(buffer);
