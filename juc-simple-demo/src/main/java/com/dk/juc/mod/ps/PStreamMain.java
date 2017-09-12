@@ -4,7 +4,7 @@ package com.dk.juc.mod.ps;
  * Created with MyNetty
  *
  * @author dk05408
- * @Description:
+ * @Description: 并行流水线
  * @create 2017-09-12 16:44
  **/
 public class PStreamMain {
