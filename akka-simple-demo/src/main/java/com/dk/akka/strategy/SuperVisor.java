@@ -13,6 +13,9 @@ import java.util.concurrent.TimeUnit;
  *
  * @author dk05408
  * @Description:
+ * akka监督策略有两种：
+     OneForOneStrategy:只对出问题的子actor进行处理. 这是默认策略
+     AllForOneStrategy:对子actor以及他的所有兄弟actor进行处理
  * @create 2017-09-27 18:04
  **/
 public class SuperVisor extends UntypedActor{
