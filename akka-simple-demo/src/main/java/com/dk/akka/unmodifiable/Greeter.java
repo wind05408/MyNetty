@@ -17,7 +17,7 @@ public class Greeter extends UntypedActor {
     public void onReceive(Object msg) throws InterruptedException {
         try {
             System.out.println("Greeter收到的数据为：" + FasterJsonTool.writeValueAsString(msg));
-            getSender().tell("Greeter工作完成。", getSelf());//给发送至发送信息.
+            getSender().tell("Greeter工作完成。", getSelf());//给发送者发送信息.
         }catch (Exception e){
             e.printStackTrace();
         }
