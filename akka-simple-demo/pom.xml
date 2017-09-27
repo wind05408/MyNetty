@@ -11,5 +11,12 @@
 
     <artifactId>akka-simple-demo</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.dk.netty</groupId>
+            <artifactId>common-simple-demo</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>

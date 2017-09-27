@@ -1,4 +1,4 @@
-package com.dk.akka;
+package com.dk.akka.helloworld;
 
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
