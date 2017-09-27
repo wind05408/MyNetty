@@ -46,10 +46,12 @@ public class SortMain {
                 start = 0;
             }
         }
+        System.out.println(Arrays.toString(arr));
     }
 
     public static void main(String[] args) {
         System.out.println(Arrays.toString(arr));
-        bubbleSort(arr);
+//        bubbleSort(arr);
+        oddEventSort(arr);
     }
 }
