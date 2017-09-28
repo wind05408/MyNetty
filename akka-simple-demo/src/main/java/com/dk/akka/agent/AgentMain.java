@@ -65,9 +65,6 @@ public class AgentMain extends UntypedActor {
         System.out.println("countAgent 1:" + countAgent.get());
 
 
-        /*
-         * 这里本来想用JDK里的AtomicInteger, 但是不行，不适用于这里的actor
-         */
 
 
         //等待所有actor执行完毕
