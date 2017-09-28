@@ -42,6 +42,7 @@ public class InboxMain extends UntypedActor {
         ActorRef inboxMain = system.actorOf(Props.create(InboxMain.class),"InboxMain");
 
         Inbox inbox = Inbox.create(system);
+        inbox.watch(inboxMain);
         inbox.send(inboxMain,Msg.WORKING);
         inbox.send(inboxMain,Msg.DONE);
         inbox.send(inboxMain,Msg.CLOSE);
